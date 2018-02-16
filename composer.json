@@ -1,5 +1,5 @@
 {
-    "name": "apperturedev/symfony-couchbase",
+    "name": "fredpalas/couchbase-bundle",
     "description": "use couchbase with doctrine",
     "license": "MIT",
     "authors": [
