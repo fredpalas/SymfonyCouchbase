@@ -9,10 +9,7 @@ services:
         id: couchbase
         class: Apperturedev\CouchbaseBundle\Classes\CouchbaseORM
         arguments:
-            - @couchbase_cluster
-            - @doctrine.orm.entity_manager
-            - @jms_serializer
+            - "@couchbase_cluster"
+            - "@doctrine.orm.entity_manager"
+            - "@jms_serializer"
             - bucket_array
-#    couchbase.example:
-#        class: Apperturedev\CouchbaseBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
