@@ -21,6 +21,15 @@ public function registerBundles()
     );
 }
 ```
+
+```yml
+# app/config/config.yml
+couchbase:
+    url: <couchbase.url>
+    buckets:
+        default: #dafult bucket
+            bucket_name: <bucket name>         
+```
 ## Requirements
 
 [JMS Serializer](https://github.com/schmittjoh/JMSSerializerBundle)
