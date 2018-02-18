@@ -37,4 +37,36 @@ couchbase:
 
 ## Documentation
 
-WIP
+```php
+
+//in action throw container
+
+public function indexAction()
+{
+    /** @var Apperturedev\CouchbaseBundle\Classes\CouchbaseORM $couchbase editor Helper */
+    $couchbase = $this->get('couchbase');
+    
+    $entity = New Entity();
+    // do anything
+    
+    // save
+    $couchbase->save($entity);
+    
+    $entity->getId();  // Will set the id Automatic
+    
+    $repository = $couchbase->getRepository('Bundle:Entity');
+    // get data
+    $entity1 = $repository->getById(1);
+    
+    /** For Run Couchbase View you need to run bin/console couchbase:generate:view Bundle:Entity */
+    /** Fixing a bug for moving old version class */
+    // country example           
+    $query = $repository->get('country');
+    $query->key('Spain')->order(\CouchbaseViewQuery::ORDER_ASCENDING)->limit(6);
+
+    // Will return a array if more than 1 or the object if is 1
+    $country = $repository->execute($query);
+}
+
+```
+
