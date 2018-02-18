@@ -119,7 +119,7 @@ class CouchbaseORM extends Functions
      *
      * @return \Apperturedev\CouchbaseBundle\Classes\CouchbaseManager
      */
-    public function getReposity($entityname)
+    public function getRepository($entityname)
     {
         $entity        = $this->doctrine->getClassMetadata($entityname)->getName();
         $this->_entity = new CouchbaseManager($entity, $this->em, $this->doctrine, $this->serializer);
@@ -211,66 +211,7 @@ class CouchbaseORM extends Functions
             }
         }
         return $id;
-    }
-    /**
-     * Restart the id.
-     *
-     * @param type $class
-     *
-     * @return int
-     *
-     * @throws \Exception
-     * @deprecated since version 0.2
-     */
-//    private function truncate_id($class)
-//    {
-//        $table   = $this->doctrine->getClassMetadata(get_class($class))->getTableName();
-//        $noexist = false;
-//        try {
-//            $this->em->get($table.'_id');
-//        } catch (\Exception $e) {
-//            //echo 'Excepción capturada: ',  $e->getMessage(), "\n";
-//            $noexist = true;
-//        }
-//        //die();
-//        if ($noexist) {
-//            $datas = array('id' => 1);
-//            $debug = $this->em->insert($table.'_id', $datas);
-//            if (null == $debug->error) {
-//                return 1;
-//            } else {
-//                throw new \Exception('Something went wrong!');
-//            }
-//        } else {
-//            $id    = $this->em->get($table.'_id')->value->id;
-//            $debug = $this->em->replace($table.'_id', array('id' => 1));
-//            if (null == $debug->error) {
-//                return 1;
-//            } else {
-//                throw new \Exception('Something went wrong!');
-//            }
-//        }
-//    }
-
-    /**
-     * Create a view by each  property of the entity object.
-     *
-     * @param type $class
-     * @deprecated since version 0.2
-     */
-//    private function createviews($class)
-//    {
-//        $table = $this->doctrine->getClassMetadata(get_class($class))->getTableName();
-//        $manager = $this->em->manager();
-//        $array = $this->toArray($class);
-//        $view = array('views' => array());
-//        foreach ($array as $key => $value) {
-//            $view['views'][$key] = [
-//                'map' => "function (doc, meta) {\n\tif(doc.$table){\n\t\temit(doc.$table.$key, doc.$table);\n\t}\n}",
-//            ];
-//        }
-//        $manager->upsertDesignDocument($table, $view);
-//    }
+    }   
 
     private function getContext()
     {
